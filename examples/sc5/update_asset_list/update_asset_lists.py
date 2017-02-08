@@ -6,7 +6,7 @@ import os
 
 def import_csv_file(filename, sc):
     with open(filename) as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, delimiter=';')
         for row in reader:
             sc.patch('asset/%s' % row['asset_id'], json={
                 'definedIPs': row['addresses'],
